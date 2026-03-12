@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kurumi Systems – AI That Works the Way You Think</title>
     <meta name="description"
-        content="Kurumi Systems is an intelligent proxy that sits between you and your LLMs, eliminating prompt frustration, context loss, and conversation restarts so you can focus on creating." />
+        content="Kurumi Systems builds tools that make working with AI assistants like ChatGPT, Claude, and Gemini feel effortless. Never lose your place in a conversation again." />
     <meta name="keywords"
-        content="AI productivity, LLM proxy, human-AI collaboration, AI tools, knowledge workers, prompt engineering, context management, AI assistant, model-agnostic AI" />
+        content="AI productivity, ChatGPT bookmark, Claude bookmark, AI conversation tools, conversation organizer, AI assistant, Chrome extension, Gemini tools" />
     <meta name="author" content="Kurumi Systems Inc." />
     <meta name="theme-color" content="#0a0a0f" />
     <link rel="canonical" href="https://kurumisystems.com/" />
@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://kurumisystems.com/" />
     <meta property="og:title" content="Kurumi Systems – AI That Works the Way You Think" />
     <meta property="og:description"
-        content="An intelligent proxy between you and your LLMs. No more prompt frustration, context loss, or conversation restarts." />
+        content="Tools that make working with AI assistants feel effortless. Never lose your place in a conversation again." />
     <meta property="og:site_name" content="Kurumi Systems" />
     <meta property="og:locale" content="en_US" />
 
@@ -27,7 +27,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Kurumi Systems – AI That Works the Way You Think" />
     <meta name="twitter:description"
-        content="An intelligent proxy between you and your LLMs. No more prompt frustration, context loss, or conversation restarts." />
+        content="Tools that make working with AI assistants feel effortless. Never lose your place in a conversation again." />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -39,7 +39,7 @@
           "@id": "https://kurumisystems.com/#organization",
           "name": "Kurumi Systems Inc.",
           "url": "https://kurumisystems.com",
-          "description": "Kurumi Systems builds intelligent proxy tools that improve knowledge workers' productivity when collaborating with large language models.",
+          "description": "Kurumi Systems builds tools that make working with AI assistants feel effortless and productive.",
           "email": "info@kurumisystems.com",
           "foundingDate": "2025"
         },
@@ -55,9 +55,19 @@
           "@id": "https://kurumisystems.com/",
           "url": "https://kurumisystems.com/",
           "name": "Kurumi Systems – AI That Works the Way You Think",
-          "description": "Kurumi Systems is an intelligent proxy that sits between you and your LLMs, eliminating prompt frustration, context loss, and conversation restarts.",
+          "description": "Kurumi Systems builds tools that make working with AI assistants feel effortless and productive.",
           "isPartOf": { "@id": "https://kurumisystems.com/#website" },
           "about": { "@id": "https://kurumisystems.com/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://kurumisystems.com/#extension",
+          "name": "Kurumi – Conversation Bookmarks",
+          "applicationCategory": "BrowserApplication",
+          "operatingSystem": "Chrome",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "description": "Intelligent local-first conversation bookmarking for ChatGPT, Claude, Gemini and Grok.",
+          "url": "https://chromewebstore.google.com/detail/kurumi-conversation-bookm/nkhifhpimbkhdegmhjgcijhgehbdjipi"
         }
       ]
     }
@@ -82,6 +92,8 @@
             --accent-glow: rgba(0, 229, 195, 0.15);
             --purple: #7c5cfc;
             --purple-glow: rgba(124, 92, 252, 0.10);
+            --coffee: #ffdd00;
+            --coffee-glow: rgba(255, 221, 0, 0.15);
             --radius: 16px;
             --radius-sm: 10px;
             --nav-h: 72px;
@@ -157,7 +169,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center
         }
 
@@ -186,6 +198,22 @@
         .nav-cta:hover {
             box-shadow: 0 0 20px var(--accent-glow);
             transform: translateY(-1px)
+        }
+
+        .nav-coffee {
+            font-size: .8rem;
+            font-weight: 600;
+            padding: .5rem 1rem;
+            border-radius: 999px;
+            border: 1.5px solid rgba(255, 221, 0, 0.3);
+            color: var(--coffee);
+            transition: background .25s, border-color .25s, transform .15s;
+        }
+
+        .nav-coffee:hover {
+            background: var(--coffee-glow);
+            border-color: var(--coffee);
+            transform: translateY(-1px);
         }
 
         /* ── Sections common ───────────────────────────────── */
@@ -317,6 +345,179 @@
         .btn-outline:hover {
             border-color: var(--accent);
             background: rgba(0, 229, 195, 0.05)
+        }
+
+        /* ── Announcement ─────────────────────────────────── */
+        .announcement {
+            background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: .4;
+        }
+
+        .announcement-inner {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge-new {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .5rem 1.2rem;
+            border-radius: 999px;
+            background: rgba(0, 229, 195, 0.1);
+            border: 1px solid rgba(0, 229, 195, 0.2);
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge-new .pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .3;
+            }
+        }
+
+        .announcement h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .announcement h2 .accent {
+            color: var(--accent);
+        }
+
+        .announcement .desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 2rem;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: left;
+            margin: 2.5rem auto 0;
+            max-width: 700px;
+            transition: border-color .3s, box-shadow .3s;
+        }
+
+        .product-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 60px -15px rgba(0, 0, 0, .5), 0 0 40px -10px var(--accent-glow);
+        }
+
+        .product-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--accent-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .product-card-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+        }
+
+        .product-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .product-card-subtitle {
+            font-size: .85rem;
+            color: var(--text-muted);
+            margin-top: .2rem;
+        }
+
+        .product-highlights {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .product-highlights li {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            font-size: .9rem;
+            color: var(--text-muted);
+        }
+
+        .product-highlights li svg {
+            flex-shrink: 0;
+            color: var(--accent);
+            opacity: .8;
+        }
+
+        .product-card .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .badge-beta {
+            display: inline-block;
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: .2rem .6rem;
+            border-radius: 999px;
+            background: var(--purple-glow);
+            border: 1px solid rgba(124, 92, 252, 0.25);
+            color: var(--purple);
+            margin-left: .5rem;
+            vertical-align: middle;
         }
 
         /* ── Problem Section ───────────────────────────────── */
@@ -456,7 +657,7 @@
 
         .how-steps {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem
         }
 
@@ -557,13 +758,36 @@
             font-size: clamp(1.8rem, 3.5vw, 2.6rem);
             font-weight: 800;
             letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             line-height: 1.2
+        }
+
+        .cta .cta-sub {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
         .cta .btn-primary {
             font-size: 1.05rem;
             padding: 1rem 2.8rem
+        }
+
+        .cta-support {
+            margin-top: 1.5rem;
+            font-size: .9rem;
+            color: var(--text-muted);
+        }
+
+        .cta-support a {
+            color: var(--coffee);
+            font-weight: 600;
+            transition: opacity .2s;
+        }
+
+        .cta-support a:hover {
+            opacity: .8;
         }
 
         /* ── Footer ────────────────────────────────────────── */
@@ -575,6 +799,14 @@
             color: var(--text-muted);
         }
 
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+        }
+
         .footer a {
             color: var(--accent);
             transition: opacity .2s
@@ -582,6 +814,10 @@
 
         .footer a:hover {
             opacity: .7
+        }
+
+        .footer .coffee-link {
+            color: var(--coffee);
         }
 
         /* ── Entrance Animations ───────────────────────────── */
@@ -627,6 +863,10 @@
                 grid-template-columns: 1fr
             }
 
+            .product-highlights {
+                grid-template-columns: 1fr;
+            }
+
             .nav-links .nav-link {
                 display: none
             }
@@ -651,6 +891,10 @@
                 flex-direction: column;
                 align-items: center
             }
+
+            .nav-coffee {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -671,7 +915,10 @@
             <a href="#about" class="nav-link">About</a>
             <a href="#features" class="nav-link">Features</a>
             <a href="#how-it-works" class="nav-link">How It Works</a>
-            <a href="mailto:info@kurumisystems.com" class="nav-cta">Get Early Access</a>
+            <a href="https://buymeacoffee.com/markchua" target="_blank" rel="noopener" class="nav-coffee">☕ Support
+                Us</a>
+            <a href="https://chromewebstore.google.com/detail/kurumi-conversation-bookm/nkhifhpimbkhdegmhjgcijhgehbdjipi"
+                target="_blank" rel="noopener" class="nav-cta">Install on Chrome</a>
         </div>
     </nav>
 
@@ -680,14 +927,88 @@
         <section class="hero" id="hero">
             <div class="hero-glow" aria-hidden="true"></div>
             <div class="hero-content">
-                <h1 class="fade-up">AI That Works<br>the Way <span class="accent">You Think</span>.</h1>
+                <h1 class="fade-up">Never Lose Your Place<br>in an <span class="accent">AI Chat</span> Again.</h1>
                 <p class="subtitle fade-up delay-1">
-                    Kurumi Systems makes collaboration with LLMs feel natural—no more prompt tweaking, context loss, or
-                    conversation restarts.
+                    Kurumi is building a suite of tools that keep <em>you</em> in the driver's seat when working with
+                    ChatGPT, Claude, Gemini, and Grok. Conversation Bookmarks is just the beginning.
                 </p>
                 <div class="hero-buttons fade-up delay-2">
-                    <a href="mailto:info@kurumisystems.com" class="btn-primary">Get Early Access</a>
-                    <a href="#about" class="btn-outline">Learn How It Works</a>
+                    <a href="https://chromewebstore.google.com/detail/kurumi-conversation-bookm/nkhifhpimbkhdegmhjgcijhgehbdjipi"
+                        target="_blank" rel="noopener" class="btn-primary">Install Free on Chrome</a>
+                    <a href="#about" class="btn-outline">See How It Works</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Announcement ─────────────────────────────── -->
+        <section class="announcement" id="announcement">
+            <div class="container">
+                <div class="announcement-inner fade-up">
+                    <div class="badge-new">
+                        <span class="pulse"></span>
+                        Now Available
+                    </div>
+                    <h2>The First Tool in a <span class="accent">Growing Suite</span></h2>
+                    <p class="desc">
+                        Conversation Bookmarks is the first release from a broader product lineup designed to keep you
+                        in control of your AI workflows — not the other way around. More tools are on the way.
+                    </p>
+                </div>
+
+                <div class="product-card fade-up delay-1">
+                    <div class="product-card-header">
+                        <div class="product-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 3a2.85 2.85 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="product-card-title">
+                                Kurumi – Conversation Bookmarks
+                                <span class="badge-beta">Beta</span>
+                            </div>
+                            <div class="product-card-subtitle">Free Chrome Extension</div>
+                        </div>
+                    </div>
+                    <ul class="product-highlights">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Bookmark any conversation
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Navigate long chats easily
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Works with 4 major AI assistants
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            100% private — stays on your device
+                        </li>
+                    </ul>
+                    <a href="https://chromewebstore.google.com/detail/kurumi-conversation-bookm/nkhifhpimbkhdegmhjgcijhgehbdjipi"
+                        target="_blank" rel="noopener" class="btn-primary">
+                        Install on Chrome — It's Free
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8h10m-4-4l4 4-4 4" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
@@ -698,8 +1019,8 @@
                 <div class="problem-grid">
                     <div class="fade-up">
                         <span class="section-label">The Problem</span>
-                        <h2 class="section-heading">Built for Humans Who Demand More from AI</h2>
-                        <p class="problem-punchline">Kurumi Systems ends that frustration—permanently.</p>
+                        <h2 class="section-heading">AI Chats Are Great—Until They Get Long</h2>
+                        <p class="problem-punchline">Kurumi keeps everything organized so you don't have to.</p>
                     </div>
                     <div class="fade-up delay-2">
                         <ul class="problem-list">
@@ -709,14 +1030,14 @@
                                         stroke-linecap="round" />
                                     <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" />
                                 </svg>
-                                Rewriting prompts over and over just to get the model back on track
+                                Scrolling through hundreds of messages to find that one answer you need
                             </li>
                             <li>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M4 16l4-4m0 0l-4-4m4 4H16" stroke="currentColor" stroke-width="1.5"
                                         stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                Losing hours of context because a conversation had to be restarted
+                                Losing track of where you were in a long conversation
                             </li>
                             <li>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -725,7 +1046,7 @@
                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                 </svg>
-                                Watching brilliant ideas evaporate when the AI "forgets" what you were building together
+                                Forgetting which conversation had the great idea you want to revisit
                             </li>
                             <li>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -733,7 +1054,7 @@
                                         stroke-linecap="round" />
                                     <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" />
                                 </svg>
-                                Juggling multiple tools and workflows that don't talk to each other
+                                Wishing you could just bookmark the important parts
                             </li>
                         </ul>
                     </div>
@@ -744,25 +1065,27 @@
         <!-- ─── Features ──────────────────────────────────── -->
         <section class="features" id="features">
             <div class="container">
-                <span class="section-label fade-up">Core Capabilities</span>
-                <h2 class="section-heading fade-up delay-1">What Sets Kurumi Apart</h2>
+                <span class="section-label fade-up">What's Available Now</span>
+                <h2 class="section-heading fade-up delay-1">A Preview of What's Coming</h2>
+                <p class="fade-up delay-1"
+                    style="color:var(--text-muted);max-width:620px;margin:-.5rem auto 0;font-size:1.05rem;line-height:1.6;">
+                    These are just the first features in a growing suite of products designed to put you — not the AI —
+                    in the driver's seat.</p>
                 <div class="feature-grid">
-                    <!-- Persistent Intent -->
+                    <!-- Spatial Map -->
                     <div class="feature-card fade-up delay-1">
                         <div class="feature-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <circle cx="12" cy="12" r="6" />
-                                <circle cx="12" cy="12" r="2" />
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path d="M3 9h18M9 3v18" />
                             </svg>
                         </div>
-                        <h3>Persistent Intent</h3>
-                        <p>Your goal stays locked in—no more "reminding" the model what you're actually trying to
-                            achieve.
-                            Context persists across every turn.</p>
+                        <h3>Conversation Map</h3>
+                        <p>See a live table of contents for your AI chat. Click any entry to jump
+                            straight to that part of the conversation.</p>
                     </div>
-                    <!-- Seamless Steering -->
+                    <!-- Auto Bookmarks -->
                     <div class="feature-card fade-up delay-2">
                         <div class="feature-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -773,22 +1096,22 @@
                                 <path d="M21 13v2a4 4 0 01-4 4H3" />
                             </svg>
                         </div>
-                        <h3>Seamless Steering</h3>
-                        <p>Guide multi-turn reasoning without copy-paste marathons or starting over. Redirect the
-                            conversation at any point with precision.</p>
+                        <h3>Automatic Bookmarks</h3>
+                        <p>Kurumi detects each question and answer as you chat, creating bookmarks
+                            automatically. No extra work required.</p>
                     </div>
-                    <!-- Faster Outcomes -->
+                    <!-- Privacy First -->
                     <div class="feature-card fade-up delay-3">
                         <div class="feature-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                                <path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" />
+                                <path d="M9 12l2 2 4-4" />
                             </svg>
                         </div>
-                        <h3>Faster &amp; Better Outcomes</h3>
-                        <p>Complex code, research papers, strategies, and creative projects finish in hours instead of
-                            days.
-                        </p>
+                        <h3>Your Data Stays Private</h3>
+                        <p>Everything stays on your computer. We never see your conversations,
+                            and nothing is sent to any server. Your chats are yours alone.</p>
                     </div>
                 </div>
             </div>
@@ -799,29 +1122,33 @@
             <div class="container">
                 <div class="how-intro fade-up">
                     <span class="section-label">How It Works</span>
-                    <h2 class="section-heading">Your Intelligent Proxy</h2>
-                    <p>Kurumi isn't another LLM—it's a smart intermediary that sits between you and your existing models
-                        like Grok, Claude, or GPT. As a model-agnostic proxy, it orchestrates interactions so you focus
-                        on
-                        creativity, not frustration.</p>
+                    <h2 class="section-heading">Three Simple Steps</h2>
+                    <p>No setup, no accounts, no configuration. Just install and go.</p>
                 </div>
                 <div class="how-steps">
                     <div class="how-card fade-up delay-1">
                         <div class="how-card-header">
                             <div class="how-card-num">1</div>
-                            <h3>The Proxy Architecture</h3>
+                            <h3>Install the Extension</h3>
                         </div>
-                        <p>Kurumi routes your inputs to the LLM, enriches them with persistent context, and refines
-                            outputs
-                            on the fly. No vendor lock-in—enhance any model without rebuilding from scratch.</p>
+                        <p>Add Kurumi to Chrome in one click from the Chrome Web Store. It's free and takes just a few
+                            seconds.</p>
                     </div>
                     <div class="how-card fade-up delay-2">
                         <div class="how-card-header">
                             <div class="how-card-num">2</div>
-                            <h3>GUI &amp; Intelligent Mechanisms</h3>
+                            <h3>Chat Like You Always Do</h3>
                         </div>
-                        <p>Visual tools for steering workflows—drag-and-drop branching, real-time previews—paired with
-                            adaptive logic that anticipates needs, tracks state, and automates iterations.</p>
+                        <p>Use ChatGPT, Claude, Gemini, or Grok as usual. Kurumi quietly creates a map of your
+                            conversation in a side panel.</p>
+                    </div>
+                    <div class="how-card fade-up delay-3">
+                        <div class="how-card-header">
+                            <div class="how-card-num">3</div>
+                            <h3>Jump to Any Part Instantly</h3>
+                        </div>
+                        <p>Click any bookmark to scroll right to that point. Your bookmarks are saved automatically and
+                            persist across sessions.</p>
                     </div>
                 </div>
             </div>
@@ -838,24 +1165,36 @@
                     </svg>
                     U.S. Patent Pending
                 </div>
-                <p>Our core architecture is protected by a pending U.S. patent, ensuring the unique way Kurumi maintains
-                    smooth human-AI collaboration is exclusive and defensible.</p>
+                <p>Our approach to keeping AI conversations organized is protected by a pending U.S. patent—a foundation
+                    we're building on as we grow.</p>
             </div>
         </section>
 
         <!-- ─── CTA ───────────────────────────────────────── -->
         <section class="cta">
             <div class="container fade-up">
-                <h2>Prototype under development.<br>Join our waitlist today.</h2>
-                <a href="mailto:info@kurumisystems.com" class="btn-primary">Contact → info@kurumisystems.com</a>
+                <h2>Start With Bookmarks. Stay for the Suite.</h2>
+                <p class="cta-sub">What you see today is just a small piece of what we're building.<br>A full suite of
+                    tools to help humans stay in command of their AI — coming soon.</p>
+                <a href="https://chromewebstore.google.com/detail/kurumi-conversation-bookm/nkhifhpimbkhdegmhjgcijhgehbdjipi"
+                    target="_blank" rel="noopener" class="btn-primary">Install on Chrome</a>
+                <p class="cta-support">
+                    Enjoying Kurumi? <a href="https://buymeacoffee.com/markchua" target="_blank" rel="noopener">☕ Buy us
+                        a coffee</a> to support development.
+                </p>
             </div>
         </section>
     </main>
 
     <!-- ─── Footer ────────────────────────────────────── -->
     <footer class="footer">
-        <p>Kurumi Systems Inc. &copy; 2025 &ndash; 2026 &middot; All rights reserved &middot; <a
-                href="https://kurumisystems.com">kurumisystems.com</a></p>
+        <div class="footer-inner">
+            <span>Kurumi Systems Inc. &copy; 2025 &ndash; 2026 &middot; All rights reserved &middot;</span>
+            <a href="https://kurumisystems.com">kurumisystems.com</a>
+            <span>&middot;</span>
+            <a href="https://buymeacoffee.com/markchua" target="_blank" rel="noopener" class="coffee-link">☕ Buy Me a
+                Coffee</a>
+        </div>
     </footer>
 
     <!-- ─── Scroll-reveal animation ───────────────────── -->
