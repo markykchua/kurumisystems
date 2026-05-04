@@ -453,9 +453,214 @@
                 grid-template-columns: 1fr;
                 gap: 2rem
             }
+        }
+
+        /* ── Mobile Menu ──────────────────────────────────── */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--text);
+            -webkit-tap-highlight-color: transparent
+        }
+
+        .menu-toggle svg {
+            width: 24px;
+            height: 24px
+        }
+
+        @media(max-width:800px) {
             .nav-links .nav-link {
                 display: none
             }
+
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center
+            }
+
+            .nav-links {
+                position: fixed;
+                top: var(--nav-h);
+                left: 0;
+                right: 0;
+                background: rgba(251, 251, 250, 0.98);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 0.5rem;
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s
+            }
+
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible
+            }
+
+            .nav-links .nav-link {
+                display: flex;
+                padding: 0.75rem 1rem;
+                font-size: 1rem;
+                width: 100%;
+                min-height: 44px;
+                align-items: center
+            }
+
+            .nav-links .nav-cta {
+                display: flex;
+                margin-top: 0.5rem;
+                justify-content: center
+            }
+
+            .nav-brand span {
+                display: inline
+            }
+        }
+
+        /* ── Mobile Optimizations ──────────────────────────── */
+        @media(max-width:768px) {
+            :root {
+                --nav-h: 56px
+            }
+
+            section {
+                padding: 3rem clamp(1rem, 5vw, 1.5rem)
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: calc(var(--nav-h) + 3rem);
+                padding-bottom: 3rem
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 8vw, 3rem)
+            }
+
+            .hero .subtitle {
+                font-size: clamp(0.9rem, 3vw, 1.1rem)
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center
+            }
+
+            .hero-buttons a {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+                padding: 0.875rem 1.5rem;
+                font-size: 1rem
+            }
+
+            .mission-grid {
+                gap: 2rem
+            }
+
+            .mission-text p {
+                font-size: 0.95rem
+            }
+
+            .product-card {
+                padding: 1.25rem
+            }
+
+            .section-heading {
+                font-size: clamp(1.5rem, 6vw, 2rem)
+            }
+
+            .patent h3 {
+                font-size: clamp(1.1rem, 4vw, 1.3rem)
+            }
+
+            .cta h2 {
+                font-size: clamp(1.5rem, 6vw, 2rem)
+            }
+
+            .cta a {
+                padding: 0.875rem 2rem;
+                font-size: 1rem
+            }
+        }
+
+        @media(max-width:480px) {
+            .nav-brand span {
+                display: none
+            }
+
+            .nav-brand img {
+                height: 28px
+            }
+
+            section {
+                padding: 2.5rem 1rem
+            }
+
+            .hero {
+                padding-top: calc(var(--nav-h) + 2rem);
+                padding-bottom: 2rem
+            }
+
+            .hero h1 {
+                font-size: clamp(1.75rem, 7vw, 2.5rem)
+            }
+
+            .product-card {
+                padding: 1rem
+            }
+
+            .product-card-title {
+                font-size: 1rem
+            }
+
+            .product-card-desc {
+                font-size: 0.85rem
+            }
+
+            .mode-item h4 {
+                font-size: 0.9rem
+            }
+
+            .mode-item p {
+                font-size: 0.8rem
+            }
+
+            .patent-badge {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem
+            }
+
+            .footer {
+                padding: 1.5rem 1rem;
+                font-size: 0.7rem
+            }
+        }
+
+        /* ── Touch Optimizations ──────────────────────────── */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation
+        }
+
+        .btn-primary, .btn-outline, .nav-cta {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .product-card a {
+            min-height: 44px
         }
     </style>
 </head>
@@ -467,12 +672,15 @@
             <img src="kurumi_logo.png" alt="Kurumi Systems Logo">
             Kurumi Systems
         </a>
-        <div class="nav-links">
-            <a href="#products">Products</a>
-            <a href="#philosophy">Philosophy</a>
-            <a href="https://buymeacoffee.com/markchua" target="_blank" rel="noopener">Support</a>
+        <div class="nav-links" id="navLinks">
+            <a href="#products" class="nav-link">Products</a>
+            <a href="#philosophy" class="nav-link">Philosophy</a>
+            <a href="https://buymeacoffee.com/markchua" target="_blank" rel="noopener" class="nav-link">Support</a>
             <a href="#products" class="nav-cta">Get Started</a>
         </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
     </nav>
 
     <main>
@@ -611,6 +819,24 @@
                 entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
             }, { threshold: 0.1 });
             document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('open');
+                });
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('open');
+                    });
+                });
+                document.addEventListener('click', (e) => {
+                    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                        navLinks.classList.remove('open');
+                    }
+                });
+            }
         })();
     </script>
 </body>
