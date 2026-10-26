@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kurumi Systems – Human-in-the-Loop AI Collaboration</title>
+    <title>Kurumi Systems – Under Construction</title>
     <meta name="description"
-        content="Kurumi Systems builds tools that empower knowledge workers to see, shape, and control how AI remembers and thinks." />
-    <meta name="keywords"
-        content="AI memory, human-in-the-loop, AI collaboration, ChatGPT bookmark, Claude tools, Gemini memory, VS Code AI extension, knowledge management" />
+        content="Kurumi Systems builds tools that empower knowledge workers to see, shape, and control how AI remembers and thinks. Our new site is under construction." />
     <meta name="author" content="Kurumi Systems Inc." />
     <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href="https://kurumisystems.com/" />
@@ -19,75 +17,28 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://kurumisystems.com/" />
-    <meta property="og:title" content="Kurumi Systems – Human-in-the-Loop AI Collaboration" />
-    <meta property="og:description"
-        content="Tools that help you see, shape, and control how AI remembers. Take command of your AI interactions." />
+    <meta property="og:title" content="Kurumi Systems – Under Construction" />
+    <meta property="og:description" content="Our new site is under construction. Check back soon." />
     <meta property="og:site_name" content="Kurumi Systems" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Kurumi Systems – Human-in-the-Loop AI Collaboration" />
-    <meta name="twitter:description"
-        content="Tools that help you see, shape, and control how AI remembers." />
+    <meta name="twitter:title" content="Kurumi Systems – Under Construction" />
+    <meta name="twitter:description" content="Our new site is under construction. Check back soon." />
 
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://kurumisystems.com/#organization",
-          "name": "Kurumi Systems Inc.",
-          "url": "https://kurumisystems.com",
-          "description": "Kurumi Systems builds tools for human-machine collaboration, focusing on AI memory control.",
-          "foundingDate": "2025"
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Kurumi Bookmark",
-          "applicationCategory": "BrowserApplication",
-          "operatingSystem": "Chrome, Firefox",
-          "description": "Conversation navigation for AI chats.",
-          "url": "https://chromewebstore.google.com/detail/kurumi-conversation-bookm/nkhifhpimbkhdegmhjgcijhgehbdjipi"
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "Kurumi Snowball",
-          "applicationCategory": "DeveloperApplication",
-          "operatingSystem": "VS Code",
-          "description": "Git for Knowledge. Turn conversations into Markdown memory."
-        }
-      ]
-    }
-    </script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <style>
         /* ── Design Tokens ─────────────────────────────────── */
         :root {
             --bg: #fbfbfa;
-            --bg-card: #ffffff;
-            --bg-card-hover: #ffffff;
             --surface: #f3f4f6;
-            --surface-2: #e5e7eb;
             --border: #e5e7eb;
-            --border-hover: #d1d5db;
             --text: #1e293b;
             --text-muted: #64748b;
             --accent: #0ea5e9;
-            --accent-dim: #0284c7;
-            --accent-glow: rgba(14, 165, 233, 0.08);
-            --purple: #8b5cf6;
-            --purple-glow: rgba(139, 92, 246, 0.08);
-            --coffee: #f59e0b;
-            --coffee-glow: rgba(245, 158, 11, 0.08);
             --radius: 12px;
-            --radius-sm: 8px;
-            --nav-h: 64px;
-            --max-w: 1000px;
         }
 
         /* ── Reset & Base ──────────────────────────────────── */
@@ -99,9 +50,9 @@
             padding: 0
         }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: var(--nav-h)
+        html,
+        body {
+            height: 100%
         }
 
         body {
@@ -110,11 +61,14 @@
             color: var(--text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+            padding: clamp(1.5rem, 5vw, 3rem);
         }
 
-        img,
-        svg {
+        img {
             display: block;
             max-width: 100%
         }
@@ -124,732 +78,108 @@
             text-decoration: none
         }
 
-        /* ── Navigation ────────────────────────────────────── */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            height: var(--nav-h);
+        /* ── Layout ────────────────────────────────────────── */
+        main {
+            flex: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 clamp(1rem, 5vw, 2rem);
-            background: rgba(251, 251, 250, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            transition: background .3s;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 2rem 0;
         }
 
-        .nav-brand {
+        .logo {
+            width: clamp(80px, 18vw, 128px);
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .brand {
             font-weight: 700;
             font-size: 1.1rem;
             letter-spacing: -0.01em;
-            display: flex;
+        }
+
+        .construction {
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+        }
+
+        .construction .dots {
+            color: var(--accent);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 34rem;
+        }
+
+        .badge {
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--text);
-        }
-
-        .nav-brand img {
-            height: 32px;
-            width: auto;
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.25rem;
-            align-items: center
-        }
-
-        .nav-links a {
-            font-size: .875rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: color .2s
-        }
-
-        .nav-links a:hover {
-            color: var(--text)
-        }
-
-        .nav-cta {
-            font-size: .8rem;
-            font-weight: 600;
-            padding: .5rem 1rem;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            transition: background .2s, transform .1s;
-        }
-
-        .nav-cta:hover {
-            background: var(--accent-glow);
-            transform: translateY(-1px);
-        }
-
-        /* ── Sections common ───────────────────────────────── */
-        section {
-            padding: 5rem clamp(1rem, 5vw, 2rem)
-        }
-
-        .container {
-            max-width: var(--max-w);
-            margin: 0 auto
-        }
-
-        .section-label {
-            font-size: .7rem;
-            font-weight: 700;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-            display: inline-block;
-        }
-
-        .section-heading {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 1.25rem;
-        }
-
-        /* ── Hero ──────────────────────────────────────────── */
-        .hero {
-            position: relative;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding-top: calc(var(--nav-h) + 2rem);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 1.25rem;
-            color: var(--text);
-        }
-
-        .hero h1 .accent {
-            color: var(--accent);
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            font-weight: 400;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-            flex-wrap: wrap
-        }
-
-        .btn-primary {
-            padding: .75rem 1.75rem;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: .9rem;
-            background: var(--accent);
-            color: white;
-            transition: background .2s, transform .1s;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-dim);
-            transform: translateY(-1px)
-        }
-
-        .btn-outline {
-            padding: .75rem 1.75rem;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: .9rem;
+            padding: 0.45rem 1rem;
             border: 1px solid var(--border);
-            color: var(--text);
-            transition: background .2s;
-        }
-
-        .btn-outline:hover {
-            background: var(--surface)
-        }
-
-        /* ── Products ──────────────────────────────────────── */
-        .products {
-            background: var(--surface)
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .product-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            transition: border-color .2s, box-shadow .2s;
-        }
-
-        .product-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .product-card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            border-radius: 999px;
             background: var(--surface);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: var(--accent);
-        }
-
-        .product-card-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .product-card-desc {
-            font-size: .9rem;
+            font-size: 0.75rem;
+            font-weight: 600;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
         }
 
-        /* ── Mission ───────────────────────────────────────── */
-        .mission-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .mission-text p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .modes-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .mode-item h4 {
-            font-size: .95rem;
-            font-weight: 700;
-            margin-bottom: .25rem;
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-        }
-
-        .mode-item h4 .dot {
+        .badge .pulse {
             width: 8px;
             height: 8px;
             border-radius: 50%;
             background: var(--accent);
+            animation: pulse 1.8s ease-in-out infinite;
         }
 
-        .mode-item p {
-            font-size: .875rem;
-            color: var(--text-muted);
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1) }
+            50% { opacity: 0.4; transform: scale(0.8) }
         }
 
-        /* ── Patent ────────────────────────────────────────── */
-        .patent {
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        .patent-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: .5rem;
-            padding: .5rem 1rem;
-            border-radius: 999px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            font-size: .75rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 1rem;
-        }
-
-        /* ── CTA ───────────────────────────────────────────── */
-        .cta {
-            text-align: center;
-            background: var(--surface);
+        @media (prefers-reduced-motion: reduce) {
+            .badge .pulse {
+                animation: none
+            }
         }
 
         /* ── Footer ────────────────────────────────────────── */
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border);
-            font-size: .75rem;
+        footer {
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
-        .footer a {
+        footer a {
             color: var(--accent);
-        }
-
-        /* ── Entrance Animations ───────────────────────────── */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity .6s ease-out, transform .6s ease-out;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0)
-        }
-
-        .delay-1 { transition-delay: .1s }
-        .delay-2 { transition-delay: .2s }
-
-        /* ── Responsive ────────────────────────────────────── */
-        @media(max-width:800px) {
-            .product-grid, .mission-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem
-            }
-        }
-
-        /* ── Mobile Menu ──────────────────────────────────── */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            color: var(--text);
-            -webkit-tap-highlight-color: transparent
-        }
-
-        .menu-toggle svg {
-            width: 24px;
-            height: 24px
-        }
-
-        @media(max-width:800px) {
-            .nav-links .nav-link {
-                display: none
-            }
-
-            .menu-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center
-            }
-
-            .nav-links {
-                position: fixed;
-                top: var(--nav-h);
-                left: 0;
-                right: 0;
-                background: rgba(251, 251, 250, 0.98);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 0.5rem;
-                border-bottom: 1px solid var(--border);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s
-            }
-
-            .nav-links.open {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible
-            }
-
-            .nav-links .nav-link {
-                display: flex;
-                padding: 0.75rem 1rem;
-                font-size: 1rem;
-                width: 100%;
-                min-height: 44px;
-                align-items: center
-            }
-
-            .nav-links .nav-cta {
-                display: flex;
-                margin-top: 0.5rem;
-                justify-content: center
-            }
-
-            .nav-brand span {
-                display: inline
-            }
-        }
-
-        /* ── Mobile Optimizations ──────────────────────────── */
-        @media(max-width:768px) {
-            :root {
-                --nav-h: 56px
-            }
-
-            section {
-                padding: 3rem clamp(1rem, 5vw, 1.5rem)
-            }
-
-            .hero {
-                min-height: auto;
-                padding-top: calc(var(--nav-h) + 3rem);
-                padding-bottom: 3rem
-            }
-
-            .hero h1 {
-                font-size: clamp(2rem, 8vw, 3rem)
-            }
-
-            .hero .subtitle {
-                font-size: clamp(0.9rem, 3vw, 1.1rem)
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center
-            }
-
-            .hero-buttons a {
-                width: 100%;
-                max-width: 280px;
-                text-align: center;
-                padding: 0.875rem 1.5rem;
-                font-size: 1rem
-            }
-
-            .mission-grid {
-                gap: 2rem
-            }
-
-            .mission-text p {
-                font-size: 0.95rem
-            }
-
-            .product-card {
-                padding: 1.25rem
-            }
-
-            .section-heading {
-                font-size: clamp(1.5rem, 6vw, 2rem)
-            }
-
-            .patent h3 {
-                font-size: clamp(1.1rem, 4vw, 1.3rem)
-            }
-
-            .cta h2 {
-                font-size: clamp(1.5rem, 6vw, 2rem)
-            }
-
-            .cta a {
-                padding: 0.875rem 2rem;
-                font-size: 1rem
-            }
-        }
-
-        @media(max-width:480px) {
-            .nav-brand span {
-                display: none
-            }
-
-            .nav-brand img {
-                height: 28px
-            }
-
-            section {
-                padding: 2.5rem 1rem
-            }
-
-            .hero {
-                padding-top: calc(var(--nav-h) + 2rem);
-                padding-bottom: 2rem
-            }
-
-            .hero h1 {
-                font-size: clamp(1.75rem, 7vw, 2.5rem)
-            }
-
-            .product-card {
-                padding: 1rem
-            }
-
-            .product-card-title {
-                font-size: 1rem
-            }
-
-            .product-card-desc {
-                font-size: 0.85rem
-            }
-
-            .mode-item h4 {
-                font-size: 0.9rem
-            }
-
-            .mode-item p {
-                font-size: 0.8rem
-            }
-
-            .patent-badge {
-                font-size: 0.7rem;
-                padding: 0.4rem 0.8rem
-            }
-
-            .footer {
-                padding: 1.5rem 1rem;
-                font-size: 0.7rem
-            }
-        }
-
-        /* ── Touch Optimizations ──────────────────────────── */
-        a, button {
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation
-        }
-
-        .btn-primary, .btn-outline, .nav-cta {
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center
-        }
-
-        .product-card a {
-            min-height: 44px
         }
     </style>
 </head>
 
 <body>
-    <!-- ─── Navigation ────────────────────────────────── -->
-    <nav class="nav">
-        <a href="#" class="nav-brand">
-            <img src="kurumi_logo.png" alt="Kurumi Systems Logo">
-            Kurumi Systems
-        </a>
-        <div class="nav-links" id="navLinks">
-            <a href="#products" class="nav-link">Products</a>
-            <a href="#philosophy" class="nav-link">Philosophy</a>
-            <a href="https://buymeacoffee.com/markchua" target="_blank" rel="noopener" class="nav-link">Support</a>
-            <a href="#products" class="nav-cta">Get Started</a>
-        </div>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-    </nav>
-
     <main>
-        <!-- ─── Hero ──────────────────────────────────────── -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="fade-up">Human-in-the-Loop<br><span class="accent">AI Collaboration</span></h1>
-                <p class="subtitle fade-up delay-1">
-                    Empowering knowledge workers to see, shape, and control how AI remembers and thinks. 
-                    We build the interface between human intent and machine intelligence.
-                </p>
-                <div class="hero-buttons fade-up delay-2">
-                    <a href="#products" class="btn-primary">Explore Our Tools</a>
-                    <a href="#philosophy" class="btn-outline">Learn Our Philosophy</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ─── Products ──────────────────────────────────── -->
-        <section class="products" id="products">
-            <div class="container">
-                <span class="section-label fade-up">Our Product Suite</span>
-                <h2 class="section-heading fade-up">Built for Control</h2>
-                
-                <div class="product-grid">
-                    <!-- Kurumi Bookmark -->
-                    <div class="product-card fade-up">
-                        <div class="product-card-header">
-                            <div class="product-card-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                            </div>
-                            <h3 class="product-card-title">Kurumi Bookmark</h3>
-                        </div>
-                        <p class="product-card-desc">Navigate long AI conversations effortlessly with a live Table of Contents. Works with ChatGPT, Claude, Gemini, and Grok.</p>
-                        <a href="https://chromewebstore.google.com/detail/kurumi-conversation-bookm/nkhifhpimbkhdegmhjgcijhgehbdjipi" target="_blank" rel="noopener" class="btn-outline" style="text-align: center;">Install on Chrome</a>
-                    </div>
-
-                    <!-- Kurumi Snowball -->
-                    <div class="product-card fade-up delay-1">
-                        <div class="product-card-header">
-                            <div class="product-card-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10m0 0l-3-3m3 3l3-3M5 20h14"></path></svg>
-                            </div>
-                            <h3 class="product-card-title">Kurumi Snowball</h3>
-                        </div>
-                        <p class="product-card-desc">Git for Knowledge. A VS Code extension that turns terminal output and chat history into a persistent, structured Markdown memory.</p>
-                        <span class="btn-outline" style="text-align: center; opacity: 0.6; cursor: default;">Coming Soon to VS Code</span>
-                    </div>
-
-                    <!-- Kurumi Token Saver -->
-                    <div class="product-card fade-up delay-2">
-                        <div class="product-card-header">
-                            <div class="product-card-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M15 9.5c0-1.38-1.34-2.5-3-2.5s-3 1.12-3 2.5 1.34 2.5 3 2.5 3 1.12 3 2.5-1.34 2.5-3 2.5"/></svg>
-                            </div>
-                            <h3 class="product-card-title">Kurumi Token Saver</h3>
-                        </div>
-                        <p class="product-card-desc">Make your AI subscription do more for you.</p>
-                        <span class="btn-outline" style="text-align: center; opacity: 0.6; cursor: default;">Coming Soon to Chrome</span>
-                    </div>
-                    <!-- And More -->
-                    <div class="product-card fade-up delay-2">
-                        <div class="product-card-header">
-                            <div class="product-card-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/><circle cx="12" cy="12" r="3"/></svg>
-                            </div>
-                            <h3 class="product-card-title">And More</h3>
-                        </div>
-                        <p class="product-card-desc">New tools are always in the pipeline. Stay tuned for what comes next.</p>
-                        <span class="btn-outline" style="text-align: center; opacity: 0.6; cursor: default;">Coming Soon</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ─── Philosophy ────────────────────────────────── -->
-        <section id="philosophy">
-            <div class="container">
-                <div class="mission-grid">
-                    <div class="fade-up">
-                        <span class="section-label">The Philosophy</span>
-                        <h2 class="section-heading">Moving Beyond the Black Box</h2>
-                        <div class="mission-text">
-                            <p>The mission of Kurumi Systems is built on a "Human-in-the-Loop" paradigm. We believe memory should be human-visible, human-editable, and human-directed.</p>
-                        </div>
-                    </div>
-                    <div class="fade-up delay-1">
-                        <ul class="modes-list">
-                            <li class="mode-item">
-                                <h4><span class="dot"></span> Transparent Mode</h4>
-                                <p>See what the AI remembers. We turn hidden context into visual maps and timelines.</p>
-                            </li>
-                            <li class="mode-item">
-                                <h4><span class="dot"></span> Interactive Mode</h4>
-                                <p>Shape the knowledge. Merge, split, and prune memory nodes to keep AI aligned with your thinking.</p>
-                            </li>
-                            <li class="mode-item">
-                                <h4><span class="dot"></span> Autonomous Mode</h4>
-                                <p>Partner with intent. Let the system proactively organize your knowledge while you focus on creation.</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ─── Patent ────────────────────────────────────── -->
-        <section class="patent">
-            <div class="container fade-up">
-                <div class="patent-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    U.S. Patent Pending
-                </div>
-                <h3 style="margin-bottom: 0.5rem;">System and Method for Human-Machine Collaboration</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 600px; margin: 0 auto;">Our core technology is built on a patented framework for non-linear, multi-modal AI interaction. We don't just use AI; we change how you live with it.</p>
-            </div>
-        </section>
-
-        <!-- ─── CTA ───────────────────────────────────────── -->
-        <section class="cta">
-            <div class="container fade-up">
-                <h2 class="section-heading">Take Command of Your AI</h2>
-                <p style="color: var(--text-muted); margin-bottom: 2rem;">Start building your knowledge snowball today.</p>
-                <a href="#products" class="btn-primary">Get Started for Free</a>
-                <p style="margin-top: 2rem; font-size: 0.85rem;">
-                    Love our work? <a href="https://buymeacoffee.com/markchua" target="_blank" rel="noopener" style="color: var(--coffee); font-weight: 600;">☕ Support us on Buy Me a Coffee</a>
-                </p>
-            </div>
-        </section>
+        <img class="logo" src="kurumi_logo_128X128.png" alt="Kurumi Systems Logo">
+        <div class="brand">Kurumi Systems</div>
+        <h1 class="construction">under construction<span class="dots">...</span></h1>
+        <p class="subtitle">
+            We're building something new. Our site will be back shortly.
+        </p>
+        <div class="badge"><span class="pulse"></span> Check back soon</div>
     </main>
 
-    <!-- ─── Footer ────────────────────────────────────── -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 – 2026 Kurumi Systems Inc. All rights reserved.</p>
-            <p style="margin-top: 0.5rem;">
-                <a href="https://kurumisystems.com">kurumisystems.com</a> &middot; 
-                <a href="mailto:info@kurumisystems.com">Contact Us</a>
-            </p>
-        </div>
+    <footer>
+        <p>&copy; 2025 – 2026 Kurumi Systems Inc. All rights reserved.</p>
+        <p>
+            <a href="https://kurumisystems.com">kurumisystems.com</a> &middot;
+            <a href="mailto:info@kurumisystems.com">Contact Us</a>
+        </p>
     </footer>
-
-    <!-- ─── Scroll-reveal animation ───────────────────── -->
-    <script>
-        (function () {
-            const obs = new IntersectionObserver((entries) => {
-                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
-            const menuToggle = document.getElementById('menuToggle');
-            const navLinks = document.getElementById('navLinks');
-            if (menuToggle && navLinks) {
-                menuToggle.addEventListener('click', () => {
-                    navLinks.classList.toggle('open');
-                });
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navLinks.classList.remove('open');
-                    });
-                });
-                document.addEventListener('click', (e) => {
-                    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                        navLinks.classList.remove('open');
-                    }
-                });
-            }
-        })();
-    </script>
 </body>
 
 </html>
